@@ -30,13 +30,11 @@ function DashboardContent({ id }: { id: string }) {
         saveNotes
     } = useApplication();
 
-    // Calculate stats based on real data
     const uploadedCount = documents.length;
     const validCount = documents.filter(d => d.status === "valid").length;
     const pendingCount = documents.filter(d => d.status === "pending" || d.status === "analyzing").length;
     const issuesCount = documents.filter(d => d.status === "invalid").length + gapAnalysis.qualityIssues.length;
 
-    // Mock application data for status card
     const mockApplication = {
         id,
         userId: "user1",
@@ -62,7 +60,7 @@ function DashboardContent({ id }: { id: string }) {
 
     return (
         <div className="flex flex-col gap-8">
-            {/* Header */}
+            {}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                     <div className="flex items-center gap-2 mb-1">
@@ -96,7 +94,7 @@ function DashboardContent({ id }: { id: string }) {
                 </div>
             </div>
 
-            {/* Tabs */}
+            {}
             <Tabs defaultValue="overview" className="space-y-4">
                 <TabsList>
                     <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -105,7 +103,7 @@ function DashboardContent({ id }: { id: string }) {
                     <TabsTrigger value="gap-analysis">Gap Analysis</TabsTrigger>
                 </TabsList>
 
-                {/* Overview Tab */}
+                {}
                 <TabsContent value="overview" className="space-y-4">
                     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                         <Card>
@@ -150,7 +148,7 @@ function DashboardContent({ id }: { id: string }) {
                         </Card>
                     </div>
 
-                    {/* NEW: Ready to Submit Panel (when score = 100% and READY_TO_SUBMIT) */}
+                    {}
                     {lifecycleStatus === "READY_TO_SUBMIT" && (
                         <ReadyToSubmitPanel
                             applicationId={id}
@@ -159,29 +157,29 @@ function DashboardContent({ id }: { id: string }) {
                         />
                     )}
 
-                    {/* NEW: Next Action Hint (always show if available) */}
+                    {}
                     {nextAction && (
                         <NextActionHint
                             nextAction={nextAction}
                             onActionClick={(action) => {
                                 console.log("Action clicked:", action);
-                                // Handle different actions
+                                
                                 if (action === "UPLOAD_DOCS" || action === "UPLOAD_ADDITIONAL_DOCS") {
                                     const documentsTab = document.querySelector('[value="documents"]') as HTMLElement;
                                     documentsTab?.click();
                                 } else if (action === "MARK_SUBMITTED") {
-                                    // Already handled by ReadyToSubmitPanel
+                                    
                                 }
                             }}
                         />
                     )}
 
-                    {/* NEW: Timeline (show after submission) */}
+                    {}
                     {lifecycleStatus !== "DOCUMENTS_IN_PROGRESS" && lifecycleStatus !== "READY_TO_SUBMIT" && milestones.length > 0 && (
                         <Timeline milestones={milestones} />
                     )}
 
-                    {/* NEW: Application Status Card and Notes (show after submission) */}
+                    {}
                     {lifecycleStatus !== "DOCUMENTS_IN_PROGRESS" && lifecycleStatus !== "READY_TO_SUBMIT" && (
                         <div className="grid gap-4 md:grid-cols-2">
                             <ApplicationStatusCard application={mockApplication} />

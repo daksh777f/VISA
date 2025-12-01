@@ -36,7 +36,7 @@ export interface GapAnalysis {
 }
 
 interface ApplicationContextType {
-    // Existing
+    
     documents: Document[];
     timeline: TimelineEvent[];
     gapAnalysis: GapAnalysis;
@@ -44,13 +44,11 @@ interface ApplicationContextType {
     analyzeDocument: (docId: string) => Promise<void>;
     refreshGapAnalysis: () => void;
 
-    // NEW: Lifecycle management
     lifecycleStatus: ApplicationLifecycleStatus;
     milestones: Milestone[];
     nextAction: NextAction | null;
     userNotes: string;
 
-    // NEW: Actions
     updateLifecycleStatus: (
         status: ApplicationLifecycleStatus,
         data?: Partial<Application>
@@ -65,7 +63,7 @@ const ApplicationContext = createContext<ApplicationContextType | undefined>(und
 
 export function ApplicationProvider({ children }: { children: ReactNode }) {
     const [documents, setDocuments] = useState<Document[]>([
-        // Initial mock data to start with (can be empty)
+        
         { id: "1", name: "resume_2024.pdf", type: "CV", status: "valid", uploadDate: "2024-10-24" },
     ]);
 
@@ -83,13 +81,11 @@ export function ApplicationProvider({ children }: { children: ReactNode }) {
         score: 25,
     });
 
-    // NEW: Lifecycle state
     const [lifecycleStatus, setLifecycleStatus] = useState<ApplicationLifecycleStatus>("DOCUMENTS_IN_PROGRESS");
     const [milestones, setMilestones] = useState<Milestone[]>([]);
     const [nextAction, setNextAction] = useState<NextAction | null>(null);
     const [userNotes, setUserNotes] = useState<string>("");
 
-    // Update next action when status or milestones change
     useEffect(() => {
         const mockApplication: Application = {
             id: "1",
@@ -108,11 +104,10 @@ export function ApplicationProvider({ children }: { children: ReactNode }) {
         setNextAction(action);
     }, [lifecycleStatus, milestones, gapAnalysis.score]);
 
-    // Update milestone statuses periodically
     useEffect(() => {
         const interval = setInterval(() => {
             setMilestones(prev => prev.map(updateMilestoneStatus));
-        }, 60000); // Every minute
+        }, 60000); 
 
         return () => clearInterval(interval);
     }, []);
@@ -123,7 +118,6 @@ export function ApplicationProvider({ children }: { children: ReactNode }) {
 
         const missing = requiredDocs.filter(req => !uploadedTypes.includes(req));
 
-        // Calculate quality issues from actual analysis results
         const qualityIssues = documents
             .filter(d => d.analysisResult && d.analysisResult.issues.length > 0)
             .flatMap(d => d.analysisResult!.issues.map(issue => `${d.name}: ${issue}`));
@@ -139,14 +133,13 @@ export function ApplicationProvider({ children }: { children: ReactNode }) {
             score: score,
         });
 
-        // Auto-transition to READY_TO_SUBMIT when score reaches 100%
         if (score === 100 && lifecycleStatus === "DOCUMENTS_IN_PROGRESS") {
             setLifecycleStatus("READY_TO_SUBMIT");
         }
     };
 
     const analyzeDocument = async (docId: string) => {
-        // Placeholder if we needed to re-analyze existing docs
+        
         console.log("Re-analyzing document", docId);
     };
 
@@ -206,11 +199,9 @@ export function ApplicationProvider({ children }: { children: ReactNode }) {
             );
         }
 
-        // Trigger gap analysis update after analysis completes
         setTimeout(refreshGapAnalysis, 100);
     };
 
-    // NEW: Update lifecycle status
     const updateLifecycleStatus = async (
         status: ApplicationLifecycleStatus,
         data?: Partial<Application>
@@ -232,7 +223,6 @@ export function ApplicationProvider({ children }: { children: ReactNode }) {
             if (result.success) {
                 setLifecycleStatus(status);
 
-                // If milestones were generated, add them
                 if (result.milestones) {
                     setMilestones(result.milestones);
                 }
@@ -244,7 +234,6 @@ export function ApplicationProvider({ children }: { children: ReactNode }) {
         }
     };
 
-    // NEW: Create milestone
     const createMilestone = async (milestone: Partial<Milestone>) => {
         try {
             const response = await fetch("/api/applications/1/milestones", {
@@ -263,7 +252,6 @@ export function ApplicationProvider({ children }: { children: ReactNode }) {
         }
     };
 
-    // NEW: Update milestone
     const updateMilestone = async (milestoneId: string, updates: Partial<Milestone>) => {
         try {
             const response = await fetch(`/api/applications/1/milestones/${milestoneId}`, {
@@ -284,7 +272,6 @@ export function ApplicationProvider({ children }: { children: ReactNode }) {
         }
     };
 
-    // NEW: Delete milestone
     const deleteMilestone = async (milestoneId: string) => {
         try {
             const response = await fetch(`/api/applications/1/milestones/${milestoneId}`, {
@@ -301,7 +288,6 @@ export function ApplicationProvider({ children }: { children: ReactNode }) {
         }
     };
 
-    // NEW: Save notes
     const saveNotes = async (notes: string) => {
         try {
             const response = await fetch("/api/applications/1/notes", {

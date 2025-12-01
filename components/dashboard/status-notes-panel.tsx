@@ -26,7 +26,6 @@ export function StatusNotesPanel({ applicationId, initialNotes = "", onSave }: S
         setHasChanges(notes !== initialNotes);
     }, [notes, initialNotes]);
 
-    // Auto-save after 2 seconds of inactivity
     useEffect(() => {
         if (!hasChanges) return;
 

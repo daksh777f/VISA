@@ -42,7 +42,7 @@ export function NewAppForm() {
 
     const handleSubmit = () => {
         setIsLoading(true);
-        // Simulate API call
+        
         setTimeout(() => {
             setIsLoading(false);
             router.push("/dashboard/application/1");
@@ -51,7 +51,7 @@ export function NewAppForm() {
 
     return (
         <div className="max-w-2xl mx-auto">
-            {/* Steps Indicator */}
+            {}
             <div className="mb-8 flex items-center justify-between">
                 {[1, 2, 3].map((s) => (
                     <div key={s} className="flex items-center gap-2">

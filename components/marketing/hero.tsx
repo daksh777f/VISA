@@ -23,7 +23,6 @@ export function Hero() {
     useGSAP(() => {
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-        // Animated background gradient
         gsap.to(bgGradientRef.current, {
             rotation: 360,
             duration: 20,
@@ -31,7 +30,6 @@ export function Hero() {
             ease: "none"
         });
 
-        // Badge entrance with bounce
         tl.from(badgeRef.current, {
             y: -30,
             opacity: 0,
@@ -40,7 +38,6 @@ export function Hero() {
             ease: "back.out(1.7)"
         });
 
-        // Headline stagger animation
         tl.from(".hero-headline", {
             y: 50,
             opacity: 0,
@@ -48,14 +45,12 @@ export function Hero() {
             stagger: 0.15,
         }, "-=0.4");
 
-        // Subheadline fade in
         tl.from(".hero-subheadline", {
             y: 30,
             opacity: 0,
             duration: 0.8,
         }, "-=0.5");
 
-        // CTA buttons with scale
         tl.from(".hero-cta", {
             y: 20,
             opacity: 0,
@@ -64,7 +59,6 @@ export function Hero() {
             stagger: 0.1,
         }, "-=0.4");
 
-        // Trust badges with stagger
         tl.from(".trust-badge", {
             y: 20,
             opacity: 0,
@@ -73,7 +67,6 @@ export function Hero() {
             stagger: 0.1,
         }, "-=0.3");
 
-        // Floating animation for badges
         gsap.to(".trust-badge", {
             y: -10,
             duration: 2,
@@ -83,7 +76,6 @@ export function Hero() {
             ease: "sine.inOut"
         });
 
-        // Parallax effect on scroll
         gsap.to(".hero-bg", {
             yPercent: 30,
             ease: "none",
@@ -99,7 +91,7 @@ export function Hero() {
 
     return (
         <section ref={containerRef} className="relative min-h-[800px] flex items-center justify-center overflow-hidden pt-16 pb-16">
-            {/* Background Image with Overlay */}
+            {}
             <div className="absolute inset-0 z-0 hero-bg">
                 <Image
                     src="/images/hero-illustration.png"
@@ -112,7 +104,7 @@ export function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/80" />
             </div>
 
-            {/* Animated Background Gradients */}
+            {}
             <div
                 ref={bgGradientRef}
                 className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-r from-primary/20 via-purple-500/20 to-pink-500/20 rounded-full blur-[120px] -z-10 mix-blend-screen"
@@ -121,9 +113,9 @@ export function Hero() {
             <div className="container px-4 md:px-8 mx-auto relative z-10">
                 <div className="flex flex-col items-center text-center space-y-8 max-w-5xl mx-auto">
 
-                    {/* Text Content */}
+                    {}
                     <div ref={textRef} className="space-y-8">
-                        {/* Badge */}
+                        {}
                         <div
                             ref={badgeRef}
                             className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary backdrop-blur-md shadow-[0_0_15px_rgba(var(--primary),0.3)] hover:shadow-[0_0_25px_rgba(var(--primary),0.5)] transition-all duration-300 cursor-pointer hover:scale-105"
@@ -132,7 +124,7 @@ export function Hero() {
                             Now supporting UK Global Talent & US H1B
                         </div>
 
-                        {/* Headline */}
+                        {}
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground drop-shadow-2xl">
                             <span className="hero-headline inline-block">Skip the Paperwork</span>{" "}
                             <br />
@@ -141,13 +133,13 @@ export function Hero() {
                             </span>
                         </h1>
 
-                        {/* Subheadline */}
+                        {}
                         <p className="hero-subheadline text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed drop-shadow-md">
                             Get your visa approved on the first try. Our AI concierge validates documents,
                             identifies gaps, and manages your entire application timeline.
                         </p>
 
-                        {/* CTA Buttons */}
+                        {}
                         <div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto justify-center pt-4">
                             <Button asChild size="lg" className="hero-cta h-14 px-10 text-lg rounded-full shadow-[0_0_20px_rgba(var(--primary),0.4)] hover:shadow-[0_0_30px_rgba(var(--primary),0.6)] transition-all duration-300 hover:scale-105 hover:-translate-y-1">
                                 <Link href="/auth/signup">
@@ -161,7 +153,7 @@ export function Hero() {
                             </Button>
                         </div>
 
-                        {/* Trust Badges */}
+                        {}
                         <div ref={trustBadgesRef} className="pt-12 flex flex-wrap justify-center gap-6 md:gap-12 text-sm md:text-base text-muted-foreground font-medium">
                             <div className="trust-badge flex items-center gap-2 bg-background/40 px-4 py-2 rounded-full backdrop-blur-sm border border-white/5 hover:bg-background/60 hover:border-white/10 transition-all duration-300 cursor-pointer hover:scale-110">
                                 <CheckCircle className="h-5 w-5 text-green-400" />

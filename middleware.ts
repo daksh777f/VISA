@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
 
 export default auth((_req) => {
-    // Middleware logic is handled in auth.ts callbacks
+    
 });
 
 export const config = {

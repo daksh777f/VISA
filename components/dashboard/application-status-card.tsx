@@ -56,7 +56,7 @@ export function ApplicationStatusCard({ application }: ApplicationStatusCardProp
             </CardHeader>
             <CardContent className="space-y-4">
                 <div className="grid gap-4 md:grid-cols-2">
-                    {/* Created Date */}
+                    {}
                     <div className="flex items-start gap-3">
                         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-500/10">
                             <Calendar className="h-4 w-4 text-blue-500" />
@@ -69,7 +69,7 @@ export function ApplicationStatusCard({ application }: ApplicationStatusCardProp
                         </div>
                     </div>
 
-                    {/* Submitted Date */}
+                    {}
                     {application.submittedAt && (
                         <div className="flex items-start gap-3">
                             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-green-500/10">
@@ -89,7 +89,7 @@ export function ApplicationStatusCard({ application }: ApplicationStatusCardProp
                         </div>
                     )}
 
-                    {/* Expected Decision */}
+                    {}
                     {application.expectedDecisionDate && (
                         <div className="flex items-start gap-3">
                             <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${daysInfo?.isOverdue ? "bg-red-500/10" : "bg-amber-500/10"
@@ -112,7 +112,7 @@ export function ApplicationStatusCard({ application }: ApplicationStatusCardProp
                         </div>
                     )}
 
-                    {/* Decision Date */}
+                    {}
                     {application.decisionAt && (
                         <div className="flex items-start gap-3">
                             <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${application.decisionType === "APPROVED" ? "bg-emerald-500/10" : "bg-red-500/10"
@@ -137,7 +137,7 @@ export function ApplicationStatusCard({ application }: ApplicationStatusCardProp
                     )}
                 </div>
 
-                {/* Reference Number */}
+                {}
                 {application.portalReferenceNumber && (
                     <div className="rounded-lg bg-muted/50 p-3 space-y-1">
                         <p className="text-xs font-medium text-muted-foreground">Portal Reference Number</p>
@@ -145,7 +145,7 @@ export function ApplicationStatusCard({ application }: ApplicationStatusCardProp
                     </div>
                 )}
 
-                {/* Completion Score */}
+                {}
                 {application.completionScore !== undefined && (
                     <div className="space-y-2">
                         <div className="flex items-center justify-between text-sm">

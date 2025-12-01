@@ -60,7 +60,7 @@ export function Features() {
     const headerRef = useRef(null);
 
     useGSAP(() => {
-        // Header animation
+        
         gsap.from(headerRef.current, {
             y: 50,
             opacity: 0,
@@ -72,7 +72,6 @@ export function Features() {
             }
         });
 
-        // Feature cards stagger animation
         gsap.from(".feature-card", {
             y: 60,
             opacity: 0,
@@ -87,7 +86,6 @@ export function Features() {
             }
         });
 
-        // Icon rotation on scroll
         gsap.to(".feature-icon", {
             rotation: 360,
             duration: 1,
@@ -104,12 +102,12 @@ export function Features() {
 
     return (
         <section ref={containerRef} id="features" className="py-20 bg-secondary/30 relative overflow-hidden">
-            {/* Animated background elements */}
+            {}
             <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-[100px] animate-pulse" />
             <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
 
             <div className="container px-4 md:px-8 mx-auto relative z-10">
-                {/* Section Header */}
+                {}
                 <div ref={headerRef} className="text-center space-y-4 max-w-3xl mx-auto mb-16">
                     <div className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary backdrop-blur-md mb-4">
                         <Sparkles className="h-4 w-4 mr-2" />
@@ -126,14 +124,14 @@ export function Features() {
                     </p>
                 </div>
 
-                {/* Features Grid */}
+                {}
                 <div className="features-grid grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {features.map((feature, index) => (
                         <Card
                             key={index}
                             className="feature-card group relative overflow-hidden border-border/50 hover:border-primary/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(var(--primary),0.2)] hover:-translate-y-2 cursor-pointer"
                         >
-                            {/* Gradient overlay on hover */}
+                            {}
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                             <CardHeader className="relative flex flex-row items-center gap-4">
@@ -152,7 +150,7 @@ export function Features() {
                                 </CardDescription>
                             </CardContent>
 
-                            {/* Animated border glow */}
+                            {}
                             <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                                 <div className={`absolute inset-0 rounded-lg bg-gradient-to-r ${feature.color} blur-xl opacity-20`} />
                             </div>
@@ -160,7 +158,7 @@ export function Features() {
                     ))}
                 </div>
 
-                {/* Bottom CTA */}
+                {}
                 <div className="text-center pt-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
                     <p className="text-lg text-muted-foreground mb-4">
                         Ready to experience the future of visa applications?

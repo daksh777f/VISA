@@ -50,7 +50,6 @@ export function ReadyToSubmitPanel({ applicationId, visaType, onSubmit }: ReadyT
         }
     };
 
-    // Get portal URL based on visa type (placeholder)
     const getPortalUrl = () => {
         const portals: Record<string, string> = {
             uk_global_talent: "https://www.gov.uk/global-talent",

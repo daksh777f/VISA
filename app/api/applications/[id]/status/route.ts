@@ -37,11 +37,8 @@ export async function PUT(
             userNotes,
         } = body;
 
-        // TODO: Fetch current application from database
-        // For now, we'll assume it exists and validate the transition
         const currentStatus: ApplicationLifecycleStatus = body.currentStatus || "DOCUMENTS_IN_PROGRESS";
 
-        // Validate the status transition
         const validation = validateStatusTransition(
             currentStatus,
             lifecycleStatus,
@@ -55,14 +52,12 @@ export async function PUT(
             );
         }
 
-        // Prepare update data
         const updateData: any = {
             lifecycleStatus,
             lastStatusUpdate: new Date(),
             updatedAt: new Date(),
         };
 
-        // Add optional fields if provided
         if (submittedAt) updateData.submittedAt = new Date(submittedAt);
         if (submissionMethod) updateData.submissionMethod = submissionMethod;
         if (portalReferenceNumber) updateData.portalReferenceNumber = portalReferenceNumber;
@@ -73,13 +68,8 @@ export async function PUT(
         if (expectedDecisionDate) updateData.expectedDecisionDate = new Date(expectedDecisionDate);
         if (userNotes !== undefined) updateData.userNotes = userNotes;
 
-        // TODO: Update application in database
-        // await db.applications.update(applicationId, updateData);
-
-        // If transitioning to SUBMITTED_WAITING, auto-generate milestones
         let generatedMilestones = null;
         if (lifecycleStatus === "SUBMITTED_WAITING" && submittedAt) {
-            // TODO: Get visa type from application
             const visaType = body.visaType || "uk_global_talent";
 
             generatedMilestones = generateDefaultMilestones(
@@ -87,9 +77,6 @@ export async function PUT(
                 visaType,
                 new Date(submittedAt)
             );
-
-            // TODO: Save milestones to database
-            // await db.milestones.createMany(generatedMilestones);
         }
 
         return NextResponse.json({

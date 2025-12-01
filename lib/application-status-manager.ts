@@ -1,19 +1,13 @@
 import { ApplicationLifecycleStatus, Application } from "@/types";
 
-/**
- * Validates if a status transition is allowed
- */
 export function canTransitionTo(
     currentStatus: ApplicationLifecycleStatus,
     newStatus: ApplicationLifecycleStatus
 ): boolean {
-    // Define allowed transitions
     const allowedTransitions: Record<ApplicationLifecycleStatus, ApplicationLifecycleStatus[]> = {
-        // Pre-submission
         DOCUMENTS_IN_PROGRESS: ["READY_TO_SUBMIT", "WITHDRAWN"],
         READY_TO_SUBMIT: ["SUBMITTED_WAITING", "DOCUMENTS_IN_PROGRESS", "WITHDRAWN"],
 
-        // Post-submission
         SUBMITTED_WAITING: ["UNDER_REVIEW", "ADDITIONAL_DOCS_REQUESTED", "WITHDRAWN"],
         UNDER_REVIEW: ["BIOMETRIC_SCHEDULED", "INTERVIEW_SCHEDULED", "DECISION_PENDING", "ADDITIONAL_DOCS_REQUESTED"],
         ADDITIONAL_DOCS_REQUESTED: ["UNDER_REVIEW", "SUBMITTED_WAITING"],
@@ -21,7 +15,6 @@ export function canTransitionTo(
         INTERVIEW_SCHEDULED: ["UNDER_REVIEW", "DECISION_PENDING"],
         DECISION_PENDING: ["APPROVED", "REJECTED"],
 
-        // Terminal states (no transitions allowed)
         APPROVED: [],
         REJECTED: [],
         WITHDRAWN: [],
@@ -30,9 +23,6 @@ export function canTransitionTo(
     return allowedTransitions[currentStatus]?.includes(newStatus) || false;
 }
 
-/**
- * Get required fields for a status transition
- */
 export function getRequiredFieldsForStatus(
     status: ApplicationLifecycleStatus
 ): (keyof Application)[] {
@@ -53,15 +43,11 @@ export function getRequiredFieldsForStatus(
     return requiredFields[status] || [];
 }
 
-/**
- * Validate application data for status transition
- */
 export function validateStatusTransition(
     currentStatus: ApplicationLifecycleStatus,
     newStatus: ApplicationLifecycleStatus,
     applicationData: Partial<Application>
 ): { valid: boolean; error?: string } {
-    // Check if transition is allowed
     if (!canTransitionTo(currentStatus, newStatus)) {
         return {
             valid: false,
@@ -69,7 +55,6 @@ export function validateStatusTransition(
         };
     }
 
-    // Check required fields
     const requiredFields = getRequiredFieldsForStatus(newStatus);
     for (const field of requiredFields) {
         if (!applicationData[field]) {
@@ -80,7 +65,6 @@ export function validateStatusTransition(
         }
     }
 
-    // Status-specific validations
     if (newStatus === "READY_TO_SUBMIT") {
         if ((applicationData.completionScore || 0) < 100) {
             return {
@@ -111,9 +95,6 @@ export function validateStatusTransition(
     return { valid: true };
 }
 
-/**
- * Get user-friendly status label
- */
 export function getStatusLabel(status: ApplicationLifecycleStatus): string {
     const labels: Record<ApplicationLifecycleStatus, string> = {
         DOCUMENTS_IN_PROGRESS: "Documents in Progress",
@@ -132,9 +113,6 @@ export function getStatusLabel(status: ApplicationLifecycleStatus): string {
     return labels[status] || status;
 }
 
-/**
- * Get status color for UI
- */
 export function getStatusColor(status: ApplicationLifecycleStatus): {
     bg: string;
     text: string;
@@ -201,23 +179,14 @@ export function getStatusColor(status: ApplicationLifecycleStatus): {
     return colors[status] || colors.DOCUMENTS_IN_PROGRESS;
 }
 
-/**
- * Check if status is terminal (no further transitions)
- */
 export function isTerminalStatus(status: ApplicationLifecycleStatus): boolean {
     return status === "APPROVED" || status === "REJECTED" || status === "WITHDRAWN";
 }
 
-/**
- * Check if status is pre-submission
- */
 export function isPreSubmission(status: ApplicationLifecycleStatus): boolean {
     return status === "DOCUMENTS_IN_PROGRESS" || status === "READY_TO_SUBMIT";
 }
 
-/**
- * Check if status is post-submission
- */
 export function isPostSubmission(status: ApplicationLifecycleStatus): boolean {
     return !isPreSubmission(status) && !isTerminalStatus(status);
 }

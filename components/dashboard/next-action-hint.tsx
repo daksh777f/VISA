@@ -86,7 +86,7 @@ export function NextActionHint({ nextAction, onActionClick }: NextActionHintProp
         <Card className={`border-2 ${getPriorityColor()}`}>
             <CardContent className="p-6">
                 <div className="flex items-start gap-4">
-                    {/* Icon */}
+                    {}
                     <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full ${nextAction.priority === "HIGH"
                             ? "bg-red-500/10 text-red-500"
                             : nextAction.priority === "MEDIUM"
@@ -96,7 +96,7 @@ export function NextActionHint({ nextAction, onActionClick }: NextActionHintProp
                         {getPriorityIcon()}
                     </div>
 
-                    {/* Content */}
+                    {}
                     <div className="flex-1 space-y-3">
                         <div className="space-y-1">
                             <div className="flex items-center gap-2 flex-wrap">
@@ -121,7 +121,7 @@ export function NextActionHint({ nextAction, onActionClick }: NextActionHintProp
                             </p>
                         </div>
 
-                        {/* CTA Button */}
+                        {}
                         {nextAction.ctaLabel && nextAction.ctaAction && (
                             <Button
                                 onClick={() => onActionClick?.(nextAction.ctaAction!)}

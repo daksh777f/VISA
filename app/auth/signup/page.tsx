@@ -17,7 +17,6 @@ export default function SignupPage() {
         event.preventDefault();
         setIsLoading(true);
 
-        // Simulate signup delay
         setTimeout(() => {
             setIsLoading(false);
             router.push("/dashboard");

@@ -24,13 +24,13 @@ export function TimelineDemo() {
                     </p>
                 </div>
 
-                {/* Timeline Mockup */}
+                {}
                 <div className="relative max-w-5xl mx-auto">
-                    {/* Decorative background */}
+                    {}
                     <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent rounded-3xl -z-10" />
 
                     <Card className="p-6 md:p-10 border-border/50 shadow-2xl bg-card/80 backdrop-blur">
-                        {/* Header of Mockup */}
+                        {}
                         <div className="flex items-center justify-between mb-12 border-b pb-6">
                             <div className="space-y-1">
                                 <h3 className="text-xl font-semibold">UK Global Talent Visa</h3>
@@ -42,17 +42,17 @@ export function TimelineDemo() {
                             </div>
                         </div>
 
-                        {/* Timeline Visual */}
+                        {}
                         <div className="relative">
-                            {/* Progress Bar Line */}
+                            {}
                             <div className="absolute top-1/2 left-0 w-full h-1 bg-secondary -translate-y-1/2 hidden md:block" />
                             <div className="absolute top-1/2 left-0 w-[40%] h-1 bg-primary -translate-y-1/2 hidden md:block" />
 
-                            {/* Steps */}
+                            {}
                             <div className="grid grid-cols-1 md:grid-cols-6 gap-8 md:gap-4 relative">
                                 {steps.map((step, i) => (
                                     <div key={i} className="flex md:flex-col items-center gap-4 md:gap-4 md:text-center z-10">
-                                        {/* Icon */}
+                                        {}
                                         <div className={`
                       h-10 w-10 rounded-full flex items-center justify-center border-4 
                       ${step.status === 'completed' ? 'bg-primary border-primary text-primary-foreground' :
@@ -64,7 +64,7 @@ export function TimelineDemo() {
                                                     <Circle className="h-5 w-5" />}
                                         </div>
 
-                                        {/* Text */}
+                                        {}
                                         <div className="flex-1 md:flex-none">
                                             <p className={`font-medium ${step.status === 'upcoming' ? 'text-muted-foreground' : 'text-foreground'}`}>
                                                 {step.title}
@@ -76,7 +76,7 @@ export function TimelineDemo() {
                             </div>
                         </div>
 
-                        {/* Active Task Card (Floating) */}
+                        {}
                         <div className="mt-12 max-w-md mx-auto">
                             <div className="rounded-lg border border-primary/20 bg-primary/5 p-4 flex items-start gap-4">
                                 <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">

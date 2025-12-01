@@ -16,7 +16,7 @@ export function Pricing() {
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    {/* Basic Plan */}
+                    {}
                     <Card className="flex flex-col border-border/50">
                         <CardHeader>
                             <CardTitle>Starter</CardTitle>
@@ -35,7 +35,7 @@ export function Pricing() {
                         </CardFooter>
                     </Card>
 
-                    {/* Pro Plan */}
+                    {}
                     <Card className="flex flex-col border-primary shadow-lg scale-105 relative">
                         <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
                             Most Popular
@@ -59,7 +59,7 @@ export function Pricing() {
                         </CardFooter>
                     </Card>
 
-                    {/* Enterprise Plan */}
+                    {}
                     <Card className="flex flex-col border-border/50">
                         <CardHeader>
                             <CardTitle>Premium Support</CardTitle>

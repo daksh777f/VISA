@@ -30,7 +30,7 @@ export default function ContactPage() {
             <main ref={containerRef} className="flex-1 container py-12 md:py-24">
                 <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
 
-                    {/* Contact Info */}
+                    {}
                     <div className="space-y-8 animate-in">
                         <div>
                             <h1 className="text-4xl font-bold tracking-tight mb-4">Get in touch</h1>

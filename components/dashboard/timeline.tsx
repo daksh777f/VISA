@@ -97,7 +97,7 @@ export function Timeline({ milestones, onAddMilestone, onEditMilestone }: Timeli
             </CardHeader>
             <CardContent>
                 <div className="relative space-y-6">
-                    {/* Vertical line */}
+                    {}
                     <div className="absolute left-[13px] top-2 bottom-2 w-0.5 bg-border" />
 
                     {sortedMilestones.map((milestone, index) => {
@@ -106,12 +106,12 @@ export function Timeline({ milestones, onAddMilestone, onEditMilestone }: Timeli
 
                         return (
                             <div key={milestone.id} className="relative pl-10">
-                                {/* Icon */}
+                                {}
                                 <div className="absolute left-0 top-1 flex h-7 w-7 items-center justify-center rounded-full bg-background border-2 border-border">
                                     {getStatusIcon(milestone.status)}
                                 </div>
 
-                                {/* Content */}
+                                {}
                                 <div
                                     className={`rounded-lg border p-4 transition-all hover:shadow-md cursor-pointer ${milestone.status === "COMPLETED" ? "bg-muted/30" : "bg-card"
                                         }`}

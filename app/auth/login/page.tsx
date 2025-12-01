@@ -22,7 +22,6 @@ export default function LoginPage() {
         const email = formData.get("email") as string;
         const password = formData.get("password") as string;
 
-        // Use NextAuth credentials provider
         const result = await signIn("credentials", {
             email,
             password,
@@ -34,7 +33,7 @@ export default function LoginPage() {
         if (result?.ok) {
             router.push("/dashboard");
         } else {
-            // Handle error (e.g., show toast)
+            
             console.error("Login failed");
         }
     }

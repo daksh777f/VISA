@@ -26,15 +26,6 @@ export async function PUT(
             );
         }
 
-        // TODO: Update application notes in database
-        // await db.applications.update({
-        //     where: { id: applicationId },
-        //     data: {
-        //         userNotes,
-        //         updatedAt: new Date(),
-        //     }
-        // });
-
         return NextResponse.json({
             success: true,
             userNotes,

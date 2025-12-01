@@ -1,9 +1,6 @@
 import { NextAction, Application, Milestone, ApplicationLifecycleStatus } from "@/types";
 import { getMilestoneDaysInfo } from "./milestone-generator";
 
-/**
- * Generate the next action for an application based on its current state
- */
 export function generateNextAction(
     application: Application,
     milestones: Milestone[]
@@ -11,18 +8,15 @@ export function generateNextAction(
     const status = application.lifecycleStatus;
     const now = new Date();
 
-    // Sort milestones by order and date
     const sortedMilestones = [...milestones].sort((a, b) => {
         if (a.order !== b.order) return a.order - b.order;
         return a.plannedDate.getTime() - b.plannedDate.getTime();
     });
 
-    // Find next pending/in-progress milestone
     const nextMilestone = sortedMilestones.find(
         m => m.status === "PENDING" || m.status === "IN_PROGRESS" || m.status === "OVERDUE"
     );
 
-    // Generate action based on status
     switch (status) {
         case "DOCUMENTS_IN_PROGRESS":
             return {
@@ -191,9 +185,6 @@ export function generateNextAction(
     }
 }
 
-/**
- * Get a short summary of next action for dashboard list view
- */
 export function getNextActionSummary(
     application: Application,
     milestones: Milestone[]
@@ -204,7 +195,6 @@ export function getNextActionSummary(
         return "No action needed";
     }
 
-    // Return a concise one-liner
     switch (application.lifecycleStatus) {
         case "DOCUMENTS_IN_PROGRESS":
             return `Upload documents (${application.completionScore}% complete)`;

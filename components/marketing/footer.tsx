@@ -6,7 +6,7 @@ export function Footer() {
         <footer className="bg-background border-t border-border/40">
             <div className="container px-4 md:px-8 py-12 md:py-16 mx-auto">
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12">
-                    {/* Brand Column */}
+                    {}
                     <div className="col-span-2 lg:col-span-2 space-y-4">
                         <Link href="/" className="flex items-center gap-2 font-bold text-xl tracking-tight">
                             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
@@ -25,7 +25,7 @@ export function Footer() {
                         </div>
                     </div>
 
-                    {/* Product Links */}
+                    {}
                     <div className="space-y-4">
                         <h4 className="font-semibold text-foreground">Product</h4>
                         <ul className="space-y-2 text-sm text-muted-foreground">
@@ -36,7 +36,7 @@ export function Footer() {
                         </ul>
                     </div>
 
-                    {/* Company Links */}
+                    {}
                     <div className="space-y-4">
                         <h4 className="font-semibold text-foreground">Company</h4>
                         <ul className="space-y-2 text-sm text-muted-foreground">
@@ -47,7 +47,7 @@ export function Footer() {
                         </ul>
                     </div>
 
-                    {/* Legal Links */}
+                    {}
                     <div className="space-y-4">
                         <h4 className="font-semibold text-foreground">Legal</h4>
                         <ul className="space-y-2 text-sm text-muted-foreground">

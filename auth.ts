@@ -5,7 +5,7 @@ import Credentials from "next-auth/providers/credentials";
 export const { handlers, signIn, signOut, auth } = NextAuth({
     trustHost: true,
     debug: true,
-    // Fallback to hardcoded secret if env var fails
+    
     secret: process.env.AUTH_SECRET || "complex_random_secret_string_here_at_least_32_chars",
     providers: [
         Google({
@@ -19,8 +19,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 password: { label: "Password", type: "password" },
             },
             async authorize(credentials) {
-                // Mock authentication for now if no real backend is ready
-                // In production, verify against Firebase or your DB
+
                 if (credentials?.email === "test@example.com" && credentials?.password === "password") {
                     return { id: "1", name: "Test User", email: "test@example.com" };
                 }
@@ -39,7 +38,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
             if (isOnDashboard) {
                 if (isLoggedIn) return true;
-                return false; // Redirect unauthenticated users to login page
+                return false; 
             } else if (isLoggedIn && (nextUrl.pathname === "/auth/login" || nextUrl.pathname === "/auth/signup")) {
                 return Response.redirect(new URL("/dashboard", nextUrl));
             }

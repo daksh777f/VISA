@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import Link from "next/link";
 
-// Mock data - in a real app, this would come from a database
 const applications = [
     {
         id: "1",
@@ -62,7 +61,7 @@ export default function DashboardPage() {
                     <AppCard key={app.id} {...app} />
                 ))}
 
-                {/* Create new application card */}
+                {}
                 <div className="flex flex-col items-center justify-center rounded-lg border border-dashed p-8 text-center animate-in fade-in-50">
                     <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-muted">
                         <Plus className="h-6 w-6 text-muted-foreground" />

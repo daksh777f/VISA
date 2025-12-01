@@ -9,7 +9,7 @@ export async function analyzeDocumentWithGemini(
 
     if (!apiKey) {
         console.error("GOOGLE_API_KEY is not set");
-        // Return a mock response if key is missing to prevent crash, but warn user
+        
         return {
             valid: false,
             issues: ["System Error: AI Service not configured (Missing API Key)"],
@@ -54,7 +54,6 @@ export async function analyzeDocumentWithGemini(
         const response = await result.response;
         const text = response.text();
 
-        // Clean up markdown code blocks if present
         const jsonString = text.replace(/```json/g, "").replace(/```/g, "").trim();
 
         return JSON.parse(jsonString);

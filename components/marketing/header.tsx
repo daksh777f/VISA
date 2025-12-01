@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-// import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"; // Removed unused import
+
 import { Menu, X, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 
@@ -25,7 +25,7 @@ export function Header() {
                     </Link>
                 </div>
 
-                {/* Desktop Nav */}
+                {}
                 <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
                     <Link href="#features" className="transition-colors hover:text-primary">Features</Link>
                     <Link href="#how-it-works" className="transition-colors hover:text-primary">How it Works</Link>
@@ -33,7 +33,7 @@ export function Header() {
                     <Link href="#about" className="transition-colors hover:text-primary">About</Link>
                 </nav>
 
-                {/* Desktop Auth */}
+                {}
                 <div className="hidden md:flex items-center gap-4">
                     {!isLoading && session ? (
                         <Button asChild size="sm">
@@ -51,7 +51,7 @@ export function Header() {
                     )}
                 </div>
 
-                {/* Mobile Menu Toggle */}
+                {}
                 <button
                     className="md:hidden p-2"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -60,7 +60,7 @@ export function Header() {
                 </button>
             </div>
 
-            {/* Mobile Menu */}
+            {}
             {isMenuOpen && (
                 <div className="md:hidden border-t border-border/40 bg-background p-4 space-y-4">
                     <nav className="flex flex-col gap-4 text-sm font-medium">
